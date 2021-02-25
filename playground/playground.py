@@ -3,7 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 @app.route('/')
 def index():
-    return render_template("index.html", phrase="Hello!",)
+    return render_template("index.html", phrase="Hello!",times=0)
 
 @app.route('/play')
 def play():
