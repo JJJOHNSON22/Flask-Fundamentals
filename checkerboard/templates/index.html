@@ -11,9 +11,9 @@
 
 <body>
     <h1>{{phrase}}</h1>
-    <div id="board">
-        {% if phrase == "home" %} {% for x in range(0, 8) %}
-        <div class="red_space"></div>
+    <div class="board">
+        {% if phrase == "Home" %} {% for x in range(0, 8) %}
+        <div class="square red"></div>
         {% endfor %} {% endif %}
     </div>
 </body>
