@@ -11,11 +11,20 @@
 
 <body>
     <h1>{{phrase}}</h1>
-    <div class="board">
-        {% if phrase == "Home" %} {% for x in range(0, 8) %}
-        <div class="square red"></div>
-        {% endfor %} {% endif %}
-    </div>
+    <table>
+        {% for i in range(0, rows) %}
+        <tr>
+            {% for j in range(0, columns) %} {% if key == 'colorSelect' and ((i + j) % 2) + 1 == 1 %}
+            <td style="background-color: {{color1}};"></td>
+            {% elif key == 'colorSelect' and ((i + j) % 2) + 1 == 2 %}
+            <td style="background-color: {{color2}};"></td>
+            {% else %}
+            <td class="color{{((i + j) % 2) + 1}}"></td>
+            {% endif %} {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
 </body>
 
 </html>
