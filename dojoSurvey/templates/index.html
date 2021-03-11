@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% block styles %} {{ bootstrap.load_css() }} {% endblock %}
+
+    <title>Dojo Survey</title>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <form class="mx-auto" style="width: 80vw;" action='/result' method='POST'>
+        <legend class="mt-2" style="text-align: center;">Hello {{ phrase }}</legend>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" name='firstName' class="form-control" id="firstName" placeholder="Jane">
+            </div>
+            <div class="col">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" name='lastName' class="form-control" id="lastName" placeholder="Doe">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="userEmail" class="form-label">Email Address</label>
+            <input type="email" name='userEmail' class="form-control" id="userEmail" placeholder="familiarfinch@realmail.com">
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-5">
+                <p>Known Languages</p>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" name="languages" id="cSharp" value="C#">
+                    <label class="custom-control-label" for="cSharp">C#</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" name="languages" id="python" value="Python">
+                    <label class="custom-control-label" for="python">Python</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" name="languages" id="java" value="Java">
+                    <label class="custom-control-label" for="java">Java</label>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <p>Specialization</p>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="frontend" name="userSpec" class="custom-control-input" value="Frontend">
+                    <label class="custom-control-label" for="frontend">Frontend</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="backend" name="userSpec" class="custom-control-input" value="Backend">
+                    <label class="custom-control-label" for="backend">Backend</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="fullStack" name="userSpec" class="custom-control-input" value="Full-stack">
+                    <label class="custom-control-label" for="fullStack">Full-stack</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="userBio" class="form-label">Bio</label>
+            <textarea class="form-control" name="userBio" id="userBio" rows="3" placeholder="Your life story"></textarea>
+        </div>
+
+        <button class="mb-3 btn btn-primary btn-block" type="submit">Create User</button>
+    </form>
+    {% endblock %}
+
+</body>
+
+</html>
