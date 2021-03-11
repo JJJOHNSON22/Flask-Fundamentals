@@ -1,0 +1,48 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    text-align: center;
+    margin: 0;
+}
+
+#phrase {
+    margin-top: 100px;
+    text-align: center;
+}
+
+div {
+    display: inline-block;
+}
+
+p {
+    text-align: center;
+}
+
+#blue_block {
+    vertical-align: auto;
+    text-align: center;
+    display: inline-block;
+    background-color: #9FC5F8;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    margin-top: 20px;
+    border-color: black;
+    border-style: solid;
+}
+
+#blue_block[data-color="green"] {
+    vertical-align: auto;
+    text-align: center;
+    display: inline-block;
+    background-color: green;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    margin-top: 20px;
+    border-color: black;
+    border-style: solid;
+}
