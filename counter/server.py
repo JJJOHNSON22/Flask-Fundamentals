@@ -17,5 +17,9 @@ def index():
         session['count'] = 1
     return render_template("index.html", phrase="Count", tempCount=session['count'])
 
+@app.route('/destroy')
+def destroy_session():
+    session.pop['count']
+
 if __name__=="__main__":
     app.run(debug=True)
