@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% block styles %} {{ bootstrap.load_css() }} {% endblock %}
+
+    <title>The Great Number Game</title>
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block content %} {% if session['guestType'] == 'newGuest' %}
+
+    <div class="container pt-5" style="text-align: center; width: 80vw;">
+        <h1>Welcome, human, are you ready for the challenge that awaits below?</h1>
+        <p>Go ahead then, and pick a number between 1 and 100.</p>
+        <form method='POST'>
+            <input type="text" class="form-control" name="guess" id="guess" placeholder="0">
+            <button formaction="/guess" type="submit" class="mt-3 btn btn-outline-primary">Guess</button>
+        </form>
+    </div>
+
+    {% elif session['guestType'] == 'returnGuest' %}
+
+    <div class="container pt-5" style="text-align: center; width: 80vw;">
+        <h2>Nice try, but {{ session['userGuess'] }} is <span style="color:red">incorrect!</span></h2>
+        <p>Pick another number between 1 and 100.</p>
+        <form method='POST'>
+            <div class="col-xs-6 col-xs-offset-3">
+                <input type="text" class="form-control" name="guess" id="guess" placeholder="Enter a Number">
+            </div>
+            <button formaction="/guess" type="submit" class="mt-3 btn btn-outline-primary">Guess</button>
+            <button formaction="/destroy" type="submit" class="mt-3 btn btn-outline-danger">Reset</button>
+        </form>
+    </div>
+
+    {% elif session['guestType'] == 'correct' %}
+
+    <div class="container pt-5" style="text-align: center; width: 80vw;">
+        <h1>You got it <span style="color: green;">correct!?</span></h1>
+        <h2>My number was {{ session['randomNumber'] }}...</h2>
+        <h2>and you guessed {{ session['userGuess'] }}!</h2>
+        <form method='POST'>
+            <button formaction="/destroy" type="submit" class="mt-3 btn btn-outline-danger">Reset</button>
+        </form>
+    </div>
+
+
+
+    {% else %}
+
+    <h2>These are not the droids you are looking for.</h2>
+
+    {% endif %} {% endblock %}
+
+</body>
+
+</html>
