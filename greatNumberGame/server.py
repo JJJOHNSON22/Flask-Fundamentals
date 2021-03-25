@@ -12,12 +12,11 @@ def index():
         print('*'*80)
         if session['guestType'] == 'correct':
             print('You are correct')
-        else:
-            session['guestType'] = 'returnGuest'
         print(session['randomNumber'])
         print(session['guestType'])
     else:
         session['randomNumber'] = random.randint(1, 100)
+        session['counter'] = 0
         print('*'*80)
         print('New number generated.')
         print(session['randomNumber'])
@@ -28,11 +27,17 @@ def index():
 @app.route('/guess', methods=['POST'])
 def guessCheck():
     session['userGuess'] = request.form['guess']
+    session['counter'] = int(session['counter']) + 1
     print(session['userGuess'])
-    if session['userGuess'] != '' and int(session['userGuess']) == int(session['randomNumber']):
+    print(session['counter'])
+    if str(session['userGuess']) == '':
+        return redirect('/')
+    if str(session['userGuess']) != '' and int(session['userGuess']) == int(session['randomNumber']):
         session['guestType'] = 'correct'
+    elif int(session['userGuess']) < int(session['randomNumber']):
+        session['guestType'] = 'tooLow'
     else:
-        session['guestType'] = 'returnGuest'
+        session['guestType'] = 'tooHigh'
     print(session['guestType'])
     return redirect('/')
 
