@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% block styles %} {{ bootstrap.load_css() }} {% endblock %}
+
+    <title>Flask Gold</title>
+    {% endblock %}
+</head>
+
+<body class="h-100" style="background-color: white;">
+
+    {% block content %}
+
+    <div class="container h-100" style="text-align: center;">
+        <div class="row h-10 p-2" style="background-color: rgb(221, 87, 181);">
+            <div class="col-2">
+                <div>
+                    <h4>Gold: </h4>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <input type="text" class="form-control" name="gold" id="gold" placeholder="{{session['gold']}}" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row h-40 justify-content-center align-items-center" style="background-color: white;">
+            <div class="col-10 col-md-8 col-lg-6" style="background-color: white;">
+                <p>Gold Earners</p>
+            </div>
+        </div>
+        <div class="row h-40 justify-content-center align-items-center" style="background-color: rgb(221, 87, 181);">
+            <div class="col-10 col-md-8 col-lg-6" style="background-color: white;">
+                <p>Activities</p>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>
