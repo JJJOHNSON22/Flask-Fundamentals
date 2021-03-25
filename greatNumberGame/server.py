@@ -8,6 +8,9 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
+    if 'winnerList' not in session:
+        print('Creating List')
+        session['winnerList'] = []
     if 'randomNumber' in session:
         print('*'*80)
         if session['guestType'] == 'correct':
@@ -30,19 +33,33 @@ def guessCheck():
     session['counter'] = int(session['counter']) + 1
     print(session['userGuess'])
     print(session['counter'])
+
     if str(session['userGuess']) == '':
         return redirect('/')
     if str(session['userGuess']) != '' and int(session['userGuess']) == int(session['randomNumber']):
         session['guestType'] = 'correct'
+        return redirect('/')
     elif int(session['userGuess']) < int(session['randomNumber']):
         session['guestType'] = 'tooLow'
     else:
         session['guestType'] = 'tooHigh'
     print(session['guestType'])
+    if session['counter'] >= 5:
+        session['guestType'] = 'gameOver'
     return redirect('/')
 
 @app.route('/destroy', methods=['POST'])
-def destroy_session():
+def tryAgain():
+    session.pop('randomNumber')
+    return redirect('/')
+
+@app.route('/leaderboard', methods=['POST'])
+def winners():
+    session['guestType'] = 'winners'
+    return redirect('/')
+
+@app.route('/reset', methods=['POST'])
+def reset():
     session.clear()
     return redirect('/')
 
