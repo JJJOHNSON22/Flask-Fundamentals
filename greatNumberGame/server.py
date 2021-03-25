@@ -10,9 +10,10 @@ bootstrap = Bootstrap(app)
 def index():
     if 'winnerList' not in session:
         print('Creating List')
-        session['winnerList'] = []
+        session['winnerList'] = [{'userName': 'Joe', 'score': 5}]
     if 'randomNumber' in session:
         print('*'*80)
+        print(session['winnerList'])
         if session['guestType'] == 'correct':
             print('You are correct')
         print(session['randomNumber'])
@@ -53,7 +54,14 @@ def tryAgain():
     session.pop('randomNumber')
     return redirect('/')
 
-@app.route('/leaderboard', methods=['POST'])
+@app.route('/save', methods=['POST'])
+def addPlayer():
+    session['guestType'] = 'winners'
+    newWinner = {'userName': request.form['user'], 'score': session['counter']}
+    session['winnerList'].append(newWinner)
+    return redirect('/')
+
+@app.route('/leaderboard', methods=['POST', 'GET'])
 def winners():
     session['guestType'] = 'winners'
     return redirect('/')
