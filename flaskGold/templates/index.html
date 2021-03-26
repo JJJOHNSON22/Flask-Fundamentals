@@ -14,27 +14,61 @@
 
     {% block content %}
 
-    <div class="container h-100" style="text-align: center;">
-        <div class="row h-10 p-2" style="background-color: rgb(221, 87, 181);">
-            <div class="col-2">
+    <div class="container-fluid ml-0 mr-0 w-100 h-100" style="text-align: center; background-color: white;">
+        <div class="row h-10 pt-2 pb-2 pl-0" style="background-color: white;">
+            <div class="col-4 col-md-3 col-lg-2 ml-0 pt-1">
                 <div>
                     <h4>Gold: </h4>
                 </div>
             </div>
-            <div class="col-3">
-                <div>
-                    <input type="text" class="form-control" name="gold" id="gold" placeholder="{{session['gold']}}" disabled>
-                </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <input type="text" class="form-control input-sm" name="gold" id="gold" placeholder="{{session['gold']}}" disabled>
             </div>
         </div>
+
         <div class="row h-40 justify-content-center align-items-center" style="background-color: white;">
-            <div class="col-10 col-md-8 col-lg-6" style="background-color: white;">
-                <p>Gold Earners</p>
+            <div class="m-3 p-2 col-2" style="max-width:300px; border: 2px solid gray;">
+                <h4>Farm</h4>
+                <form method='POST' class="mt-3">
+                    <p>Earn 10-20 gold</p>
+                    <input type="hidden" name="earn" value="1">
+                    <button formaction="/process" type="submit" class="btn btn-outline-primary">Get Gold</button>
+                </form>
+            </div>
+            <div class="m-3 p-2 col-2" style="max-width:300px; border: 2px solid gray;">
+                <h4>Cave</h4>
+                <form method='POST' class="mt-3">
+                    <p>Earn 5-10 gold</p>
+                    <input type="hidden" name="earn" value="2">
+                    <button formaction="/process" type="submit" class="btn btn-outline-primary">Get Gold</button>
+                </form>
+            </div>
+            <div class="m-3 p-2 col-2" style="max-width:300px; border: 2px solid gray;">
+                <h4>House</h4>
+                <form method='POST' class="mt-3">
+                    <p>Earn 2-5 gold</p>
+                    <input type="hidden" name="earn" value="4">
+                    <button formaction="/process" type="submit" class="btn btn-outline-primary">Get Gold</button>
+                </form>
+            </div>
+            <div class="m-3 p-2 col-2" style="max-width:300px; border: 2px solid gray;">
+                <h4>Casino</h4>
+                <form method='POST' class="mt-3">
+                    <p>Earn or lose 0-50 gold</p>
+                    <input type="hidden" name="earn" value="casino">
+                    <button formaction="/process" type="submit" class="btn btn-outline-primary">Get Gold</button>
+                </form>
             </div>
         </div>
-        <div class="row h-40 justify-content-center align-items-center" style="background-color: rgb(221, 87, 181);">
-            <div class="col-10 col-md-8 col-lg-6" style="background-color: white;">
+
+        <div class="row h-40 justify-content-center align-items-center " style="background-color: white; ">
+
+            <div class="col-10 p-3 " style="background-color: gray; height:20vh ">
                 <p>Activities</p>
+                <div>
+
+                </div>
+
             </div>
         </div>
     </div>

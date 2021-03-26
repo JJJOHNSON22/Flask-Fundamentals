@@ -8,8 +8,20 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    session['gold'] = 100
+    if 'gold' not in session:
+        session['gold'] = 10
     return render_template("index.html")
+
+@app.route('/process', methods=['POST'])
+def processMoney():
+    if request.form['earn'] == 'casino':
+        randEarn = random.randint(0,100) - 50
+        session['gold'] = int(session['gold'] + randEarn)
+    else:
+        randEarn = random.randint(10,20)
+        total = randEarn // int(request.form['earn'])
+        session['gold'] = int(session['gold'] + total)
+    return redirect('/')
 
 @app.route('/reset', methods=['POST'])
 def reset():
